@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment, QR Code Scanner, and Screenshot Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="container qr-scanner">
+            <h1>QR Code Scanner</h1>
+            <p>Drag and drop an image or paste from clipboard</p>
+            <div id="qr-drop-zone">
+                <img id="qr-image" src="" alt="">
+            </div>
+            <div id="qr-result">
+                <p>UPI ID: <span id="upi-id"></span> <button class="copy-btn" data-copy-target="upi-id">Copy</button></p>
+                <p>UPI Name: <span id="upi-name"></span> <button class="copy-btn" data-copy-target="upi-name">Copy</button></p>
+                <input id="new-upi-name" class="update" type="text" placeholder="Enter a new UPI Name">
+                <button id="update-button" class="update-button">Update</button>
+                <p>Currency: <span id="currency"></span></p>
+                <p>Amount: ₹ <span id="amount"></span></p>
+            </div>
+        </div>
+            <div class="container payment-ui" id="payment-ui">
+            <header class="header">
+                <div class="back-button">&#8592;</div>
+                <div class="title">Pay</div>
+                <div class="help-button">?</div>
+            </header>
+            <div class="pay-section">
+                <div class="content">
+                    <div class="recipient">
+                        <div id="recipient-icon" class="recipient-icon">NA</div>
+                        <div class="recipient-details">
+                            <div class="recipient-name" id="payment-upi-name">NA</div>
+                            <div class="recipient-id" id="payment-upi-id">NA</div>
+                        </div>
+                    </div>
+                    <div class="amount-section">
+                        <div class="amount" id="payment-amount">&#8377; </div>
+                    </div>
+                    <div class="message-section">
+                        <input type="text" placeholder="Add a message (optional)">
+                    </div>
+                </div>
+                <div class="grey-section"></div>
+            </div>
+            <button class="pay-button">PROCEED TO PAY</button>
+            <button id="copy-payment-btn" class="copy-payment-btn">Copy Payment Screen</button>
+        </div>
+        <div class="container screenshot-tool">
+            <h2 class="heading">LAPTOP SCREENSHOT</h2>
+            <canvas id="laptop-canvas" tabindex="1"></canvas>
+            <div class="dropdown-container">
+                <select id="screen-size-dropdown-laptop">
+                    <option value="1366x768">1366x768 (15.6")</option>
+                    <option value="1440x900">1440x900 (17")</option>
+                    <option value="1536x864">1536x864 (15.6")</option>
+                    <option value="1600x900">1600x900 (17")</option>
+                    <option value="1920x1080">1920x1080 (21.5")</option>
+                    <option value="1920x1200">1920x1200 (24")</option>
+                    <option value="2560x1440">2560x1440 (27")</option>
+                    <option value="2880x1800">2880x1800 (27")</option>
+                    <option value="3840x2160">3840x2160 (27")</option>
+                </select>
+                <button class="remove-button" data-canvas-id="laptop-canvas">Remove</button>
+            </div>
+            <button id="measure-size-button">Measure Screen Size</button>
+            <p id="screen-size-info"></p>
+            <button id="combine-button">Combine</button>
+<img id="result-image" alt="Combined Screenshot" style="display: none;">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
